@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service 
+metadata:
+  name: oa2server-dep
+spec:
+  selector:
+    app: oa2server-dep
+  ports:
+  - port: 8110
+    targetPort: 8110
+  type: NodePort

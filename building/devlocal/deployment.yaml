@@ -1,0 +1,23 @@
+apiVersion: apps/v1         #line 1  (required field) 
+kind: Deployment            #line 2  (required field)
+metadata:                   #line 3  (required field)
+  name: oa2server-app     
+  labels:                   
+    app: oa2server-dep          
+spec:                    #line7   (required field)
+  replicas: 1            #line8 How many Replica we want to create in cluster
+  selector:
+    matchLabels:
+      app: oa2server-dep     #line16  matching with labels name of from metadata
+  template:              #line17 Templeting the Deployment and declare the spec
+    metadata:
+      labels:
+        app: oa2server-dep  #line20 matching with label name of metadata  
+    spec:                #line21
+      containers:
+      - name: atom-c                                   #line23
+        image: chakalo/oa2server-img:v1   #line24
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8110  #line31
+
